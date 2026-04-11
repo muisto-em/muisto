@@ -406,28 +406,33 @@
     .order-card .oc-arrow { margin-left: auto; color: rgba(255,255,255,.5); font-size: 18px; flex-shrink: 0; }
 
     /* ===== VOICES ===== */
-    .voices { background: var(--white); }
-    .voices-track {
-      display: flex; gap: 12px; padding: 0 16px 30px;
-      overflow-x: auto; scroll-snap-type: x mandatory;
-      scrollbar-width: none; -ms-overflow-style: none;
-    }
-    .voices-track::-webkit-scrollbar { display: none; }
-    .voice-card {
-      min-width: 260px; flex-shrink: 0;
-      scroll-snap-align: start;
-      background: var(--cream); border-radius: 10px; padding: 24px 20px;
-      position: relative;
-    }
-    .voice-card::before {
-      content: '\201C'; font-size: 48px; color: var(--rose); opacity: .3;
-      position: absolute; top: 10px; left: 16px; line-height: 1;
-      font-family: 'Cormorant Garamond', serif;
-    }
-    .stars { color: #C4A07A; font-size: 12px; margin-bottom: 6px; }
-    .voice-text { font-size: 12px; color: var(--txt); line-height: 2; margin-bottom: 14px; padding-top: 16px; font-family: 'Noto Sans JP', sans-serif; }
-    .voice-meta { font-size: 10px; color: var(--txt-mid); letter-spacing: .1em; font-family: 'Noto Sans JP', sans-serif; }
-
+.voices { background: var(--white); }
+.voices-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px; padding: 0 16px 52px;
+}
+.voice-card {
+  background: var(--cream); border-radius: 8px;
+  padding: 8px 10px 7px;
+  position: relative;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.voice-card::before {
+  content: '\201C'; font-size: 22px; color: var(--rose); opacity: .22;
+  position: absolute; top: 2px; left: 7px; line-height: 1;
+  font-family: 'Cormorant Garamond', serif;
+}
+.stars { color: #C4A07A; font-size: 8px; margin-bottom: 2px; }
+.voice-text {
+  font-size: 9.5px; color: var(--txt); line-height: 1.75;
+  padding-top: 6px; font-family: 'Noto Sans JP', sans-serif;
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.voice-meta { font-size: 8px; color: var(--txt-mid); letter-spacing: .06em; font-family: 'Noto Sans JP', sans-serif; margin-top: 5px; }
+    
     /* ===== ABOUT ===== */
     .about { background: var(--cream); }
     .about-inner { padding: 0 20px 52px; }
