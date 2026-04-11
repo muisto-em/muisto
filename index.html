@@ -156,6 +156,7 @@ footer{background:#2D2420;padding:40px 64px;text-align:center}
 @media(max-width:768px){
   nav{padding:14px 20px}
   .nav-links,.nav-btn{display:none}
+  .nav-toggle{display:flex}  
   .hero{grid-template-columns:1fr}
   .hero-right{min-height:280px;order:-1}
   .hero-left{padding:40px 24px}
@@ -167,6 +168,51 @@ footer{background:#2D2420;padding:40px 64px;text-align:center}
   .cta-btns{flex-direction:column;align-items:center}
   .sub-products{grid-template-columns:1fr}
 }
+  /* ハンバーガーボタン */
+.nav-toggle{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  cursor:pointer;background:none;border:none;padding:4px;z-index:200;
+}
+.nav-toggle span{
+  display:block;width:22px;height:2px;background:var(--brown);
+  border-radius:2px;transition:all .3s;transform-origin:center;
+}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* モバイルメニュー */
+.nav-mobile{
+  display:none;position:fixed;inset:0;z-index:150;
+  background:rgba(249,245,240,.98);
+  flex-direction:column;align-items:center;justify-content:center;
+}
+.nav-mobile.open{display:flex}
+.nav-mobile ul{list-style:none;text-align:center;width:100%}
+.nav-mobile li{padding:18px 0;border-bottom:1px solid rgba(123,94,82,.1);margin:0 40px;}
+.nav-mobile li:first-child{border-top:1px solid rgba(123,94,82,.1)}
+.nav-mobile a{text-decoration:none;color:var(--text);font-size:17px;letter-spacing:.18em;transition:color .3s;}
+.nav-mobile a:hover{color:var(--brown)}
+.nav-mobile-order{
+  display:inline-block;margin-top:36px;padding:14px 44px;
+  background:var(--brown);color:#fff;text-decoration:none;
+  font-size:13px;letter-spacing:.2em;border-radius:2px;
+}
+
+/* オーダー詳細CTAバー */
+.cta-bar{
+  text-align:center;padding:28px 24px;background:var(--cream);
+  border-top:1px solid rgba(123,94,82,.08);
+  border-bottom:1px solid rgba(123,94,82,.08);
+}
+.cta-bar p{font-size:12px;color:var(--text-l);letter-spacing:.06em;margin-bottom:14px}
+.btn-inline{
+  display:inline-flex;align-items:center;gap:8px;padding:11px 30px;
+  border:1px solid var(--brown);color:var(--brown);text-decoration:none;
+  font-size:12px;letter-spacing:.18em;border-radius:2px;transition:all .3s;
+}
+.btn-inline:hover{background:var(--brown);color:#fff}
+.btn-inline::after{content:'→';font-size:11px}
 </style>
 </head>
 <body>
@@ -182,6 +228,21 @@ footer{background:#2D2420;padding:40px 64px;text-align:center}
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <a class="nav-btn" href="#cta">ご注文はこちら</a>
+  <!-- スマホ用ハンバーガーボタン -->
+  <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+  <!-- スマホ用モバイルメニュー -->
+<div class="nav-mobile" id="navMobile">
+  <ul>
+    <li><a href="#gallery" onclick="closeNav()">作品</a></li>
+    <li><a href="#plans" onclick="closeNav()">料金</a></li>
+    <li><a href="#flow" onclick="closeNav()">制作の流れ</a></li>
+    <li><a href="#voices" onclick="closeNav()">お客様の声</a></li>
+    <li><a href="#faq" onclick="closeNav()">FAQ</a></li>
+  </ul>
+  <a class="nav-mobile-order" href="#cta" onclick="closeNav()">ご注文はこちら</a>
+</div>
 </nav>
 
 <!-- ヒーロー -->
@@ -262,6 +323,83 @@ footer{background:#2D2420;padding:40px 64px;text-align:center}
     <span class="g-tag" style="position:absolute;bottom:12px;left:12px">シンプル</span>
   </div>
 </div>
+  <!-- ギャラリー後のCTAバー -->
+<div class="cta-bar">
+  <p>気になったプランがあれば、お気軽にご相談ください</p>
+  <a class="btn-inline" href="#plans">オーダー詳細はこちら</a>
+</div>
+</section>
+
+<!-- ギフト帯 -->
+<div class="gift-band">
+  <div>
+    <h3>🎁 Gift Ticket — ギフトチケット</h3>
+    <p>
+      出産祝いとして贈りたい方へ。チケットをプレゼントすると、<br>
+      受け取ったご両親がMuistoとデザインを一緒に決められます。<br>
+      「好みがわからない」そんな悩みを解決する、新しいギフトの形。
+    </p>
+  </div>
+  <a class="btn-gift" href="#cta">詳しく問い合わせる</a>
+</div>
+
+<!-- 制作の流れ -->
+<section class="flow" id="flow">
+  <span class="s-label">How it works</span>
+  <h2 class="s-title">制作の流れ</h2>
+  <div class="s-line"></div>
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="step-num">01</div>
+      <div class="step-t">ご注文・ご相談</div>
+      <p class="step-d">minneまたはCreemaからご注文、もしくは公式LINEにてご相談ください。</p>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">02</div>
+      <div class="step-t">ヒアリング</div>
+      <p class="step-d">お好みのお花・色味・デザインのイメージをLINEで丁寧にお聞きします。</p>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">03</div>
+      <div class="step-t">制作・確認</div>
+      <p class="step-d">手刺繍で丁寧に制作。デザイン確認後、ご満足いただけてから仕上げます。</p>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">04</div>
+      <div class="step-t">お届け</div>
+      <p class="step-d">ギフトラッピング仕様でお届け。お届けまで約3〜4ヶ月。お急ぎはご相談を。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 制作の流れ後のCTAバー -->
+<div class="cta-bar">
+  <p>ご注文前のご相談もお気軽にどうぞ。公式LINEにご連絡ください</p>
+  <a class="btn-inline" href="#plans">オーダー詳細はこちら</a>
+</div>
+
+<!-- お客様の声 -->
+<section class="voices" id="voices">
+  <span class="s-label">Voices</span>
+  <h2 class="s-title">お客様の声</h2>
+  <div class="s-line"></div>
+  <div class="voice-grid">
+    <div class="voice-card">
+      <div class="stars">★★★★★</div>
+      <p class="voice-text">1人目の時にお願いしてとっても素敵だったので、2人目でも依頼しました。今回もイメージ通り可愛い足形刺繍を作っていただけて大満足です。</p>
+      <div class="voice-meta">S様 ／ フルオーダー</div>
+    </div>
+    <div class="voice-card">
+      <div class="stars">★★★★★</div>
+      <p class="voice-text">丁寧な対応で、こちらの細かなリクエストに応えてくださりました。様々な色味を使われ、とても可愛い仕上がりのお花になっています。素敵な記念品で、オーダーして良かったです。</p>
+      <div class="voice-meta">I様 ／ カスタム</div>
+    </div>
+    <div class="voice-card">
+      <div class="stars">★★★★★</div>
+      <p class="voice-text">箱を開けた瞬間「おぉーっ」と夫婦で歓声が起こりました！綺麗で丁寧な刺繍で、心を込めて仕上げてくださったのが伝わります。宝物にします。</p>
+      <div class="voice-meta">N様 ／ フルオーダー</div>
+    </div>
+  </div>
 </section>
 
 <!-- 料金 -->
@@ -330,73 +468,8 @@ footer{background:#2D2420;padding:40px 64px;text-align:center}
     </div>
   </div>
 </section>
-
-<!-- ギフト帯 -->
-<div class="gift-band">
-  <div>
-    <h3>🎁 Gift Ticket — ギフトチケット</h3>
-    <p>
-      出産祝いとして贈りたい方へ。チケットをプレゼントすると、<br>
-      受け取ったご両親がMuistoとデザインを一緒に決められます。<br>
-      「好みがわからない」そんな悩みを解決する、新しいギフトの形。
-    </p>
-  </div>
-  <a class="btn-gift" href="#cta">詳しく問い合わせる</a>
-</div>
-
-<!-- 制作の流れ -->
-<section class="flow" id="flow">
-  <span class="s-label">How it works</span>
-  <h2 class="s-title">制作の流れ</h2>
-  <div class="s-line"></div>
-  <div class="flow-steps">
-    <div class="flow-step">
-      <div class="step-num">01</div>
-      <div class="step-t">ご注文・ご相談</div>
-      <p class="step-d">minneまたはCreemaからご注文、もしくは公式LINEにてご相談ください。</p>
-    </div>
-    <div class="flow-step">
-      <div class="step-num">02</div>
-      <div class="step-t">ヒアリング</div>
-      <p class="step-d">お好みのお花・色味・デザインのイメージをLINEで丁寧にお聞きします。</p>
-    </div>
-    <div class="flow-step">
-      <div class="step-num">03</div>
-      <div class="step-t">制作・確認</div>
-      <p class="step-d">手刺繍で丁寧に制作。デザイン確認後、ご満足いただけてから仕上げます。</p>
-    </div>
-    <div class="flow-step">
-      <div class="step-num">04</div>
-      <div class="step-t">お届け</div>
-      <p class="step-d">ギフトラッピング仕様でお届け。お届けまで約3〜4ヶ月。お急ぎはご相談を。</p>
-    </div>
-  </div>
-</section>
-
-<!-- お客様の声 -->
-<section class="voices" id="voices">
-  <span class="s-label">Voices</span>
-  <h2 class="s-title">お客様の声</h2>
-  <div class="s-line"></div>
-  <div class="voice-grid">
-    <div class="voice-card">
-      <div class="stars">★★★★★</div>
-      <p class="voice-text">1人目の時にお願いしてとっても素敵だったので、2人目でも依頼しました。今回もイメージ通り可愛い足形刺繍を作っていただけて大満足です。</p>
-      <div class="voice-meta">S様 ／ フルオーダー</div>
-    </div>
-    <div class="voice-card">
-      <div class="stars">★★★★★</div>
-      <p class="voice-text">丁寧な対応で、こちらの細かなリクエストに応えてくださりました。様々な色味を使われ、とても可愛い仕上がりのお花になっています。素敵な記念品で、オーダーして良かったです。</p>
-      <div class="voice-meta">I様 ／ カスタム</div>
-    </div>
-    <div class="voice-card">
-      <div class="stars">★★★★★</div>
-      <p class="voice-text">箱を開けた瞬間「おぉーっ」と夫婦で歓声が起こりました！綺麗で丁寧な刺繍で、心を込めて仕上げてくださったのが伝わります。宝物にします。</p>
-      <div class="voice-meta">N様 ／ フルオーダー</div>
-    </div>
-  </div>
-</section>
-
+  
+  
 <!-- FAQ -->
 <section class="faq" id="faq">
   <span class="s-label">FAQ</span>
@@ -456,6 +529,21 @@ footer{background:#2D2420;padding:40px 64px;text-align:center}
   </ul>
   <p class="footer-copy">© 2024 Muisto. All rights reserved.</p>
 </footer>
-
+<script>
+  const toggle = document.getElementById('navToggle');
+  const mobile = document.getElementById('navMobile');
+  toggle.addEventListener('click', () => {
+    const isOpen = mobile.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    toggle.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+  });
+  function closeNav() {
+    mobile.classList.remove('open');
+    toggle.classList.remove('open');
+    document.body.style.overflow = '';
+    toggle.setAttribute('aria-label', 'メニューを開く');
+  }
+</script>
 </body>
 </html>
