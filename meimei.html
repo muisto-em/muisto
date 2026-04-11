@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>命名刺繍 | Muisto（むいすと）</title>
+  <meta name="description" content="葉っぱリースにお名前・読み仮名・生年月日を刺繍した命名パネル。ミシン刺繍と手刺繍のお花を組み合わせた特別な一枚。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --rose:     #C09088;
+      --rose-dark:#9E7268;
+      --lav:      #B0A8BC;
+      --lav-l:    #D8D2E4;
+      --cream:    #F7F2EC;
+      --beige:    #EDE5D8;
+      --beige-d:  #D9CFBF;
+      --brown:    #7A5C52;
+      --brown-l:  #A08070;
+      --txt:      #48393A;
+      --txt-mid:  #8A7572;
+      --white:    #FDFAF6;
+      --sage:     #9EAA96;
+      --sage-l:   #C9D4C2;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif JP', serif;
+      color: var(--txt); background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 20px; height: 56px;
+      box-shadow: 0 2px 12px rgba(122,92,82,0.06);
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-style: italic;
+      color: var(--brown); text-decoration: none;
+    }
+    .back-btn {
+      display: flex; align-items: center; gap: 6px;
+      color: var(--txt-mid); text-decoration: none;
+      font-size: 12px; font-family: 'Noto Sans JP', sans-serif;
+      transition: color .2s;
+    }
+    .back-btn:hover { color: var(--rose); }
+
+    /* ===== HERO ===== */
+    .product-hero {
+      margin-top: 56px;
+      background: linear-gradient(160deg, var(--sage-l) 0%, var(--beige) 100%);
+      padding: 52px 24px 40px;
+      text-align: center;
+    }
+    .product-hero .category {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px; letter-spacing: 4px; color: var(--sage);
+      display: block; margin-bottom: 12px; font-style: italic;
+    }
+    .product-hero h1 {
+      font-size: 28px; font-weight: 400; color: var(--brown);
+      margin-bottom: 10px;
+    }
+    .product-hero .price-tag {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 22px; color: var(--sage); font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .product-hero .note {
+      font-size: 11px; color: var(--txt-mid);
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    /* ===== PHOTO ===== */
+    .photo-area {
+      background: var(--beige);
+      min-height: 280px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .photo-area img { width: 100%; max-height: 380px; object-fit: cover; }
+    .photo-placeholder {
+      text-align: center; color: var(--txt-mid);
+      font-size: 13px; font-family: 'Noto Sans JP', sans-serif;
+      padding: 60px 20px;
+    }
+    .photo-placeholder i { font-size: 48px; color: var(--beige-d); display: block; margin-bottom: 12px; }
+
+    /* ===== CONTENT ===== */
+    .content { padding: 0 20px; }
+    .section { padding: 40px 0; border-bottom: 1px solid var(--beige-d); }
+    .section:last-child { border-bottom: none; }
+    .sec-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px; letter-spacing: 4px; color: var(--sage);
+      display: block; margin-bottom: 14px; font-style: italic;
+    }
+    .sec-title {
+      font-size: 20px; font-weight: 400; color: var(--brown);
+      margin-bottom: 16px;
+    }
+    .sec-body {
+      font-size: 13px; color: var(--txt-mid); line-height: 2.1;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    /* ===== SPEC TABLE ===== */
+    .spec-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    .spec-table tr { border-bottom: 1px solid var(--beige); }
+    .spec-table th {
+      width: 110px; text-align: left; padding: 12px 0;
+      font-size: 11px; color: var(--txt-mid); font-weight: 400;
+      font-family: 'Noto Sans JP', sans-serif; vertical-align: top;
+    }
+    .spec-table td {
+      padding: 12px 0; font-size: 13px; color: var(--txt);
+      font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;
+    }
+
+    /* ===== COLOR CHIPS ===== */
+    .color-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .color-chip {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--white); border: 1px solid var(--beige-d);
+      border-radius: 20px; padding: 5px 12px 5px 8px;
+      font-size: 11px; color: var(--txt);
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+    .color-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      background: var(--sage);
+      padding: 40px 24px; text-align: center;
+    }
+    .cta-section h2 {
+      font-size: 20px; color: #fff; font-weight: 400; margin-bottom: 10px;
+    }
+    .cta-section p {
+      font-size: 12px; color: rgba(255,255,255,.8);
+      margin-bottom: 28px; font-family: 'Noto Sans JP', sans-serif;
+      line-height: 2;
+    }
+    .cta-btns { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+    .btn-line {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; background: #06C755; color: #fff;
+      text-decoration: none; font-size: 13px; letter-spacing: .12em;
+      border-radius: 50px; font-family: 'Noto Sans JP', sans-serif;
+      transition: opacity .2s;
+    }
+    .btn-line:hover { opacity: .85; }
+    .btn-shop {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 32px; border: 1px solid rgba(255,255,255,.4);
+      color: #fff; text-decoration: none; font-size: 13px;
+      letter-spacing: .12em; border-radius: 50px;
+      font-family: 'Noto Sans JP', sans-serif; transition: all .2s;
+    }
+    .btn-shop:hover { background: rgba(255,255,255,.1); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #3a2428; color: rgba(255,255,255,.4);
+      text-align: center; padding: 28px 20px;
+      font-size: 11px; font-family: 'Noto Sans JP', sans-serif;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif; font-size: 20px;
+      color: rgba(255,255,255,.6); display: block; margin-bottom: 10px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">muisto</a>
+  <a class="back-btn" href="index.html#products">
+    <i class="fas fa-chevron-left"></i> 商品一覧へ
+  </a>
+</header>
+
+<!-- HERO -->
+<div class="product-hero">
+  <span class="category">Naming Embroidery</span>
+  <h1>命名刺繍</h1>
+  <div class="price-tag">準備中</div>
+  <div class="note">Coming Soon</div>
+</div>
+
+<!-- PHOTO -->
+<div class="photo-area">
+  <div class="photo-placeholder">
+    <i class="fas fa-image"></i>
+    ここに写真が入ります<br>
+    <small style="font-size:10px;opacity:.6">images/ フォルダに写真を追加してください</small>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <div class="section">
+    <span class="sec-label">About</span>
+    <h2 class="sec-title">特別な命名パネル</h2>
+    <p class="sec-body">
+      葉っぱリースにお名前・読み仮名・生年月日を刺繍した命名パネルです。<br><br>
+      ミシン刺繍と手刺繍のお花を組み合わせた、特別な一枚。お部屋のインテリアとして飾れる、新生児の誕生をお祝いする素敵なアイテムです。<br><br>
+      出産祝いとしてもご好評いただいています。
+    </p>
+  </div>
+
+  <div class="section">
+    <span class="sec-label">Spec</span>
+    <h2 class="sec-title">商品詳細</h2>
+    <table class="spec-table">
+      <tr><th>サイズ</th><td>A4パネル</td></tr>
+      <tr><th>糸</th><td>DMC / COSMO 刺繍糸</td></tr>
+      <tr><th>納期</th><td>準備中（公開後3〜4ヶ月）</td></tr>
+      <tr><th>発送</th><td>全国発送対応</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <span class="sec-label">Coming Soon</span>
+    <h2 class="sec-title">入荷をお待ちください</h2>
+    <p class="sec-body">
+      命名刺繍は現在準備中です。デザイン・納期などの詳細は、こちらのLINEで通知いたします。<br><br>
+      ご質問やご希望のデザインについても、LINEからお気軽にお問い合わせください。
+    </p>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>入荷通知を受け取る</h2>
+  <p>新しく商品化される際は、まずLINEで通知します。<br>友だち登録してお待ちください。</p>
+  <div class="cta-btns">
+    <a class="btn-line" href="https://lin.ee/XXXXXXX">
+      <i class="fab fa-line"></i> LINEで通知を受け取る
+    </a>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">muisto</span>
+  <p>© 2025 Muisto / Maho Morimoto</p>
+</footer>
+
+</body>
+</html>

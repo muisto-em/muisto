@@ -14,21 +14,21 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --rose:      #C09088;   /* くすみローズ — メインカラー */
-      --rose-dark: #9E7268;
-      --rose-over: rgba(168,108,100,0.75);
-      --sage:      #9EAA96;   /* くすみセージ — サブカラー */
-      --sage-l:    #BCC8B5;
-      --lav:       #B0A8BC;   /* くすみラベンダー */
-      --mauve:     #C4B0B8;   /* くすみモーヴ */
-      --cream:     #F7F2EC;   /* あたたかいクリーム */
-      --beige:     #EDE5D8;   /* ベージュ背景 */
-      --beige-d:   #D9CFBF;
-      --brown:     #7A5C52;   /* テキストブラウン */
-      --brown-l:   #A08070;
-      --txt:       #48393A;
-      --txt-mid:   #8A7572;
-      --white:     #FDFAF6;
+      --rose:      #D4A8A2;   /* パステルローズ — メインカラー */
+      --rose-dark: #B88880;
+      --rose-over: rgba(192,140,130,0.72);
+      --sage:      #B2C4AA;   /* パステルセージ */
+      --sage-l:    #CCDDC6;
+      --lav:       #C4BCD4;   /* パステルラベンダー */
+      --mauve:     #D4C4CC;   /* パステルモーヴ */
+      --cream:     #FAF6F0;   /* やさしいクリーム */
+      --beige:     #F2EBE0;   /* 薄いベージュ背景 */
+      --beige-d:   #E4DAC8;
+      --brown:     #8C6A5E;   /* やわらかなブラウン */
+      --brown-l:   #B09080;
+      --txt:       #5A4844;
+      --txt-mid:   #9A8582;
+      --white:     #FEFCF9;
     }
 
     html { scroll-behavior: smooth; }
@@ -110,7 +110,7 @@
     .hero {
       margin-top: 56px;
       position: relative; height: 88vh; min-height: 420px;
-      background: linear-gradient(150deg, #8a5f58 0%, #6b3f38 50%, #4a2820 100%);
+      background: linear-gradient(150deg, #9a7068 0%, #7a5048 50%, #5a3530 100%);
       display: flex; align-items: flex-end; justify-content: flex-start;
       overflow: hidden;
     }
@@ -322,8 +322,20 @@
       padding: 24px 18px; text-align: center;
       transition: transform .25s, box-shadow .25s;
       position: relative; overflow: hidden;
+      text-decoration: none; display: block;
+      cursor: pointer;
     }
-    .product-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(122,92,82,0.12); }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 36px rgba(122,92,82,0.16);
+    }
+    .product-card:hover::after {
+      content: '詳細を見る →';
+      display: block; margin-top: 14px;
+      font-size: 11px; color: var(--rose);
+      font-family: 'Noto Sans JP', sans-serif;
+      letter-spacing: .1em;
+    }
     .product-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
     }
@@ -699,7 +711,7 @@
       </div>
       <div class="ashi-plans">
 
-        <a class="ashi-plan-row" href="#order">
+        <a class="ashi-plan-row" href="ashigata.html#simple">
           <span class="apl-num">01</span>
           <div class="apl-body">
             <strong>シンプルオーダー</strong>
@@ -709,7 +721,7 @@
           <i class="fas fa-chevron-right apl-arrow"></i>
         </a>
 
-        <a class="ashi-plan-row hot" href="#order">
+        <a class="ashi-plan-row hot" href="ashigata.html#custom">
           <span class="apl-num">02</span>
           <div class="apl-body">
             <strong>カスタムオーダー <span class="hot-pill">人気No.1</span></strong>
@@ -719,7 +731,7 @@
           <i class="fas fa-chevron-right apl-arrow"></i>
         </a>
 
-        <a class="ashi-plan-row" href="#order">
+        <a class="ashi-plan-row" href="ashigata.html#full">
           <span class="apl-num">03</span>
           <div class="apl-body">
             <strong>フルオーダー</strong>
@@ -735,28 +747,28 @@
     <!-- サブ3商品 -->
     <div class="sub-products-grid">
 
-      <div class="product-card c-sage">
+      <a class="product-card c-sage" href="meimei.html">
         <div class="coming-badge">Coming Soon</div>
         <div class="product-icon c-sage"><i class="fas fa-leaf"></i></div>
         <h3>命名刺繍</h3>
         <div class="price tbd">準備中</div>
         <p>葉っぱリースにお名前・生年月日を刺繍した命名パネル。お部屋に飾れるインテリアに。</p>
-      </div>
+      </a>
 
-      <div class="product-card c-lav">
+      <a class="product-card c-lav" href="stai.html">
         <div class="product-icon c-lav"><i class="fas fa-baby"></i></div>
         <h3>名前刺繍スタイ</h3>
         <div class="price">¥1,500〜¥1,800</div>
         <p>お名前を刺繍したやわらかなスタイ。出産祝いとして贈る方も多い一品です。</p>
-      </div>
+      </a>
 
-      <div class="product-card c-blue">
+      <a class="product-card c-blue" href="wappen.html">
         <div class="coming-badge">Coming Soon</div>
         <div class="product-icon c-blue"><i class="fas fa-star"></i></div>
         <h3>ワッペン</h3>
         <div class="price tbd">準備中</div>
         <p>Muistoらしいお花モチーフを刺繍したワッペン。バッグや服につけてさりげなく特別感を。</p>
-      </div>
+      </a>
 
     </div>
 
