@@ -154,9 +154,10 @@ footer{background:#2D2420;padding:40px 64px;text-align:center}
 
 /* レスポンシブ */
 @media(max-width:768px){
+    .mobile-tabs{display:block}
+  .hero{padding-top:88px}  /* タブバー分を追加 */
   nav{padding:14px 20px}
   .nav-links,.nav-btn{display:none}
-  .nav-toggle{display:flex !important}  
   .hero{grid-template-columns:1fr}
   .hero-right{min-height:280px;order:-1}
   .hero-left{padding:40px 24px}
@@ -213,6 +214,36 @@ footer{background:#2D2420;padding:40px 64px;text-align:center}
 }
 .btn-inline:hover{background:var(--brown);color:#fff}
 .btn-inline::after{content:'→';font-size:11px}
+
+/* スマホ用タブバー */
+.mobile-tabs{
+  display:none;
+  position:fixed;top:49px;left:0;right:0;z-index:99;
+  background:rgba(249,245,240,.97);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid rgba(123,94,82,.12);
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.mobile-tabs::-webkit-scrollbar{display:none}
+.mobile-tabs ul{
+  display:flex;list-style:none;
+  padding:0 8px;
+  min-width:max-content;
+}
+.mobile-tabs li a{
+  display:block;padding:10px 14px;
+  font-size:11px;letter-spacing:.1em;
+  color:var(--text-l);text-decoration:none;
+  white-space:nowrap;transition:color .3s;
+}
+.mobile-tabs li a:hover{color:var(--brown)}
+.mobile-tabs .tab-order{
+  color:var(--brown);
+  border-left:1px solid rgba(123,94,82,.15);
+}
+
 </style>
 </head>
 <body>
@@ -228,20 +259,16 @@ footer{background:#2D2420;padding:40px 64px;text-align:center}
     <li><a href="#faq">FAQ</a></li>
   </ul>
   <a class="nav-btn" href="#cta">ご注文はこちら</a>
-  <!-- スマホ用ハンバーガーボタン -->
-  <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
-    <span></span><span></span><span></span>
-  </button>
-  <!-- スマホ用モバイルメニュー -->
-<div class="nav-mobile" id="navMobile">
+<!-- スマホ用タブバー -->
+<div class="mobile-tabs">
   <ul>
-    <li><a href="#gallery" onclick="closeNav()">作品</a></li>
-    <li><a href="#plans" onclick="closeNav()">料金</a></li>
-    <li><a href="#flow" onclick="closeNav()">制作の流れ</a></li>
-    <li><a href="#voices" onclick="closeNav()">お客様の声</a></li>
-    <li><a href="#faq" onclick="closeNav()">FAQ</a></li>
+    <li><a href="#gallery">作品</a></li>
+    <li><a href="#plans">料金</a></li>
+    <li><a href="#flow">制作の流れ</a></li>
+    <li><a href="#voices">お客様の声</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#cta" class="tab-order">ご注文</a></li>
   </ul>
-  <a class="nav-mobile-order" href="#cta" onclick="closeNav()">ご注文はこちら</a>
 </div>
 </nav>
 
