@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>名前刺繍スタイ | Muisto（むいすと）</title>
+  <meta name="description" content="お名前を刺繍した、世界にひとつだけのスタイ。出産祝いにも喜ばれる一品。¥1,500〜。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --rose:     #C09088;
+      --rose-dark:#9E7268;
+      --lav:      #B0A8BC;
+      --lav-l:    #D8D2E4;
+      --cream:    #F7F2EC;
+      --beige:    #EDE5D8;
+      --beige-d:  #D9CFBF;
+      --brown:    #7A5C52;
+      --brown-l:  #A08070;
+      --txt:      #48393A;
+      --txt-mid:  #8A7572;
+      --white:    #FDFAF6;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Serif JP', serif;
+      color: var(--txt); background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--white);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 20px; height: 56px;
+      box-shadow: 0 2px 12px rgba(122,92,82,0.06);
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px; font-style: italic;
+      color: var(--brown); text-decoration: none;
+    }
+    .back-btn {
+      display: flex; align-items: center; gap: 6px;
+      color: var(--txt-mid); text-decoration: none;
+      font-size: 12px; font-family: 'Noto Sans JP', sans-serif;
+      transition: color .2s;
+    }
+    .back-btn:hover { color: var(--rose); }
+
+    /* ===== HERO ===== */
+    .product-hero {
+      margin-top: 56px;
+      background: linear-gradient(160deg, var(--lav-l) 0%, var(--beige) 100%);
+      padding: 52px 24px 40px;
+      text-align: center;
+    }
+    .product-hero .category {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px; letter-spacing: 4px; color: var(--lav);
+      display: block; margin-bottom: 12px; font-style: italic;
+    }
+    .product-hero h1 {
+      font-size: 28px; font-weight: 400; color: var(--brown);
+      margin-bottom: 10px;
+    }
+    .product-hero .price-tag {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 22px; color: var(--rose-dark); font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .product-hero .note {
+      font-size: 11px; color: var(--txt-mid);
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    /* ===== PHOTO ===== */
+    .photo-area {
+      background: var(--beige);
+      min-height: 280px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .photo-area img { width: 100%; max-height: 380px; object-fit: cover; }
+    .photo-placeholder {
+      text-align: center; color: var(--txt-mid);
+      font-size: 13px; font-family: 'Noto Sans JP', sans-serif;
+      padding: 60px 20px;
+    }
+    .photo-placeholder i { font-size: 48px; color: var(--beige-d); display: block; margin-bottom: 12px; }
+
+    /* ===== CONTENT ===== */
+    .content { padding: 0 20px; }
+    .section { padding: 40px 0; border-bottom: 1px solid var(--beige-d); }
+    .section:last-child { border-bottom: none; }
+    .sec-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 11px; letter-spacing: 4px; color: var(--lav);
+      display: block; margin-bottom: 14px; font-style: italic;
+    }
+    .sec-title {
+      font-size: 20px; font-weight: 400; color: var(--brown);
+      margin-bottom: 16px;
+    }
+    .sec-body {
+      font-size: 13px; color: var(--txt-mid); line-height: 2.1;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    /* ===== SPEC TABLE ===== */
+    .spec-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+    .spec-table tr { border-bottom: 1px solid var(--beige); }
+    .spec-table th {
+      width: 110px; text-align: left; padding: 12px 0;
+      font-size: 11px; color: var(--txt-mid); font-weight: 400;
+      font-family: 'Noto Sans JP', sans-serif; vertical-align: top;
+    }
+    .spec-table td {
+      padding: 12px 0; font-size: 13px; color: var(--txt);
+      font-family: 'Noto Sans JP', sans-serif; line-height: 1.8;
+    }
+
+    /* ===== VARIANTS ===== */
+    .variant-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px; margin-top: 8px;
+    }
+    .variant-card {
+      background: var(--white); border-radius: 8px;
+      padding: 16px 14px; border: 1px solid var(--beige-d);
+    }
+    .variant-card .v-name {
+      font-size: 13px; font-weight: 500; color: var(--brown);
+      font-family: 'Noto Sans JP', sans-serif; margin-bottom: 4px;
+    }
+    .variant-card .v-price {
+      font-size: 16px; color: var(--rose-dark);
+      font-family: 'Noto Sans JP', sans-serif; font-weight: 500;
+    }
+    .variant-card .v-desc {
+      font-size: 11px; color: var(--txt-mid);
+      font-family: 'Noto Sans JP', sans-serif;
+      margin-top: 6px; line-height: 1.7;
+    }
+
+    /* ===== COLOR CHIPS ===== */
+    .color-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .color-chip {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--white); border: 1px solid var(--beige-d);
+      border-radius: 20px; padding: 5px 12px 5px 8px;
+      font-size: 11px; color: var(--txt);
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+    .color-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      background: var(--rose);
+      padding: 40px 24px; text-align: center;
+    }
+    .cta-section h2 {
+      font-size: 20px; color: #fff; font-weight: 400; margin-bottom: 10px;
+    }
+    .cta-section p {
+      font-size: 12px; color: rgba(255,255,255,.8);
+      margin-bottom: 28px; font-family: 'Noto Sans JP', sans-serif;
+      line-height: 2;
+    }
+    .cta-btns { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+    .btn-line {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 32px; background: #06C755; color: #fff;
+      text-decoration: none; font-size: 13px; letter-spacing: .12em;
+      border-radius: 50px; font-family: 'Noto Sans JP', sans-serif;
+      transition: opacity .2s;
+    }
+    .btn-line:hover { opacity: .85; }
+    .btn-shop {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 32px; border: 1px solid rgba(255,255,255,.4);
+      color: #fff; text-decoration: none; font-size: 13px;
+      letter-spacing: .12em; border-radius: 50px;
+      font-family: 'Noto Sans JP', sans-serif; transition: all .2s;
+    }
+    .btn-shop:hover { background: rgba(255,255,255,.1); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #3a2428; color: rgba(255,255,255,.4);
+      text-align: center; padding: 28px 20px;
+      font-size: 11px; font-family: 'Noto Sans JP', sans-serif;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif; font-size: 20px;
+      color: rgba(255,255,255,.6); display: block; margin-bottom: 10px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">muisto</a>
+  <a class="back-btn" href="index.html#products">
+    <i class="fas fa-chevron-left"></i> 商品一覧へ
+  </a>
+</header>
+
+<!-- HERO -->
+<div class="product-hero">
+  <span class="category">Name Embroidery Bib</span>
+  <h1>名前刺繍スタイ</h1>
+  <div class="price-tag">¥1,500 〜 ¥1,800</div>
+  <div class="note">送料別 ／ 受注制作</div>
+</div>
+
+<!-- PHOTO -->
+<div class="photo-area">
+  <div class="photo-placeholder">
+    <i class="fas fa-image"></i>
+    ここに写真が入ります<br>
+    <small style="font-size:10px;opacity:.6">images/ フォルダに写真を追加してください</small>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <div class="section">
+    <span class="sec-label">About</span>
+    <h2 class="sec-title">世界にひとつのスタイ</h2>
+    <p class="sec-body">
+      お名前を刺繍した、やわらかな手刺繍スタイです。<br><br>
+      くすみカラーのやさしい色合いで、写真映えする特別な一枚に。出産祝いとして贈る方も多く、もらった方もきっと喜ぶ、特別なギフトです。<br><br>
+      お名前のほか、生年月日やひとことメッセージなども相談いただけます。
+    </p>
+  </div>
+
+  <div class="section">
+    <span class="sec-label">Plans</span>
+    <h2 class="sec-title">プラン・料金</h2>
+    <div class="variant-grid">
+      <div class="variant-card">
+        <div class="v-name">スタンダード</div>
+        <div class="v-price">¥1,500</div>
+        <div class="v-desc">名前のみ刺繍。シンプルでやさしい仕上がり。</div>
+      </div>
+      <div class="variant-card">
+        <div class="v-name">デコレーション</div>
+        <div class="v-price">¥1,800</div>
+        <div class="v-desc">名前＋お花モチーフなどを添えた華やかな仕上がり。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="sec-label">Spec</span>
+    <h2 class="sec-title">商品詳細</h2>
+    <table class="spec-table">
+      <tr><th>素材</th><td>綿100%（やわらかなダブルガーゼ）</td></tr>
+      <tr><th>サイズ</th><td>フリーサイズ（新生児〜1歳ごろ）</td></tr>
+      <tr><th>糸</th><td>DMC / COSMO 刺繍糸</td></tr>
+      <tr><th>納期</th><td>ご注文から約2〜4週間</td></tr>
+      <tr><th>発送</th><td>全国発送対応（送料別途）</td></tr>
+      <tr><th>ラッピング</th><td>ギフトラッピング無料</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <span class="sec-label">Color</span>
+    <h2 class="sec-title">カラー展開</h2>
+    <p class="sec-body" style="margin-bottom:14px">
+      くすみカラー・パステルカラーから選べます。ご希望の色はLINEでご相談ください。
+    </p>
+    <div class="color-chips">
+      <div class="color-chip"><div class="color-dot" style="background:#D4B0AC"></div>くすみローズ</div>
+      <div class="color-chip"><div class="color-dot" style="background:#B8C8B0"></div>くすみセージ</div>
+      <div class="color-chip"><div class="color-dot" style="background:#C4B8D0"></div>くすみラベンダー</div>
+      <div class="color-chip"><div class="color-dot" style="background:#F5DDD8"></div>パステルピンク</div>
+      <div class="color-chip"><div class="color-dot" style="background:#D8ECD4"></div>パステルグリーン</div>
+      <div class="color-chip"><div class="color-dot" style="background:#D8E8F4"></div>パステルブルー</div>
+      <div class="color-chip"><div class="color-dot" style="background:#F8F0E0"></div>クリーム</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>ご注文・お問い合わせ</h2>
+  <p>「こんな色にしたい」「名前はこう入れてほしい」<br>ご要望はLINEでお気軽にどうぞ。</p>
+  <div class="cta-btns">
+    <a class="btn-line" href="https://lin.ee/XXXXXXX">
+      <i class="fab fa-line"></i> LINEで相談する
+    </a>
+    <a class="btn-shop" href="https://minne.com/@muisto04">
+      <i class="fas fa-store"></i> minneで購入する
+    </a>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">muisto</span>
+  <p>© 2025 Muisto / Maho Morimoto</p>
+</footer>
+
+</body>
+</html>
