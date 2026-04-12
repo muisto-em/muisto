@@ -305,44 +305,40 @@
       margin-bottom: 8px; font-family: 'Noto Sans JP', sans-serif;
     }
 
-    /* ===== WORKS 無限マーキーギャラリー ===== */
-    .works { background: var(--cream); overflow: hidden; padding-bottom: 52px; }
-    .gallery-row { overflow: hidden; margin-bottom: 10px; }
-    .gallery-row:last-child { margin-bottom: 0; }
-    .gallery-track {
-      display: flex; gap: 10px;
-      width: max-content;
-      animation: galleryL 30s linear infinite;
-    }
-    .gallery-track.reverse { animation: galleryR 34s linear infinite; }
-    .gallery-row:hover .gallery-track { animation-play-state: paused; }
-    @keyframes galleryL {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    @keyframes galleryR {
-      0%   { transform: translateX(-50%); }
-      100% { transform: translateX(0); }
-    }
-    .gallery-img {
-      width: 200px; height: 150px; border-radius: 8px;
-      overflow: hidden; flex-shrink: 0; position: relative;
-      background: var(--beige);
-    }
-    .gallery-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .gallery-img .g-label {
-      position: absolute; bottom: 8px; left: 8px;
-      background: rgba(122,92,82,.75); color: #fff;
-      font-size: 9px; padding: 2px 8px; border-radius: 4px;
-      font-family: 'Noto Sans JP', sans-serif; letter-spacing: .05em;
-    }
-    .gallery-img-ph {
-      width: 200px; height: 150px; border-radius: 8px;
-      flex-shrink: 0; background: var(--beige-d);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--brown-l); font-size: 11px;
-      font-family: 'Noto Sans JP', sans-serif;
-    }
+/* ===== WORKS スワイプギャラリー ===== */
+.works { background: var(--cream); padding-bottom: 52px; }
+.gallery-swipe {
+  display: flex; gap: 10px;
+  overflow-x: scroll; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; -ms-overflow-style: none;
+  padding: 0 16px 0;
+}
+.gallery-swipe::-webkit-scrollbar { display: none; }
+.gallery-img {
+  width: 200px; height: 150px; border-radius: 8px;
+  overflow: hidden; flex-shrink: 0; position: relative;
+  background: var(--beige); scroll-snap-align: start;
+}
+.gallery-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.gallery-img .g-label {
+  position: absolute; bottom: 8px; left: 8px;
+  background: rgba(122,92,82,.75); color: #fff;
+  font-size: 9px; padding: 2px 8px; border-radius: 4px;
+  font-family: 'Noto Sans JP', sans-serif; letter-spacing: .05em;
+}
+.gallery-img-ph {
+  width: 200px; height: 150px; border-radius: 8px;
+  flex-shrink: 0; background: var(--beige-d);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--brown-l); font-size: 11px; scroll-snap-align: start;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.swipe-hint {
+  text-align: right; padding: 8px 20px 0;
+  font-size: 10px; color: var(--txt-mid);
+  font-family: 'Noto Sans JP', sans-serif; letter-spacing: .08em;
+}
 
     /* ===== FLOATING CTA BUTTON ===== */
     .fab-btn {
